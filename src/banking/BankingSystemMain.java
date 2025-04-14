@@ -1,5 +1,7 @@
 package banking;
 
+import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class BankingSystemMain {
@@ -22,7 +24,7 @@ public class BankingSystemMain {
 	void makeAccount();    // 계좌개설을 위한 함수
 	void depositMoney();    // 입    금
 	void withdrawMoney(); // 출    금
-	void showAccInfo();  // 전체계좌정보출력
+	void showAccInfo();  // 3전체계좌정보출력
 
 	 */
 	public static void menuChoice() {		
@@ -33,8 +35,9 @@ public class BankingSystemMain {
 		while( true ) {
 			
 			menu();
-			
-			choice = sc.nextInt();			
+		
+			choice = AccountErrorException.errorCheck();
+			//choice = sc.nextInt();
 			
 			if( choice == Account.MAKE ) {
 				System.err.println( choice+"선택");
@@ -58,6 +61,7 @@ public class BankingSystemMain {
 				System.exit(0);
 				
 			}
+			
 		}
 	}
 	
@@ -65,9 +69,18 @@ public class BankingSystemMain {
 		
 		/*
 		double num = 2.00001;
-		double test = Math.round(num);
-		int test = (int)num;
+		double test = Math.floor(num);
+		//int test = (int)num;
 		System.out.println( " test : " + test );
+		
+		System.out.println("되나");
+		String str = (BankingSystemMain.sc.nextLine());
+		
+		if( str.equals("y") ) {
+			System.out.println("1111");
+		} else {
+			System.out.println("2222");
+		}
 		*/
 		
 		menuChoice();
