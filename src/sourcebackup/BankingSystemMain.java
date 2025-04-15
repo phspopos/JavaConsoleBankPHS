@@ -15,7 +15,9 @@ public class BankingSystemMain {
 		System.out.println("2. 입금");
 		System.out.println("3. 출금");
 		System.out.println("4. 전체계좌정보출력");
-		System.out.println("5. 프로그램 종료");
+		System.out.println("5. 계좌정보삭제");
+		System.out.println("6. 저장옵션");
+		System.out.println("7. 프로그램 종료");
 		
 	}
 	
@@ -55,8 +57,16 @@ public class BankingSystemMain {
 				System.err.println( choice+"선택");
 				acManager.showAccInfo();
 				
+			}else if( choice == Account.CLEARNUM ) {
+				acManager.removeAcount();
+				
+			}else if( choice == Account.AUTOSAVE ) {
+				acManager.autoSave();			
+				
 			}else if( choice == Account.EXIT ) {
 				System.err.println( choice+"선택");
+				acManager.objectSave();
+				//acManager.objectLoad();
 				System.out.println("프로그램을 종료 합니다.");
 				System.exit(0);
 				

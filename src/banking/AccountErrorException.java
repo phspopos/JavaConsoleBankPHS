@@ -14,8 +14,8 @@ public class AccountErrorException extends Exception {
 			
 			choice = BankingSystemMain.sc.nextInt();
 			
-			if( choice > 5 || choice == 0   ) {					
-				System.out.println(" 1~5까지만 입력하세요 다시 입력하세요");
+			if( choice > 7 || choice == 0   ) {					
+				System.out.println(" 1~7까지만 입력하세요 다시 입력하세요");
 				BankingSystemMain.sc.nextLine();
 				Thread.sleep(1000);				
 				
@@ -23,19 +23,20 @@ public class AccountErrorException extends Exception {
 			
 		}catch( NumberFormatException e2) {
 			System.out.println("숫자만 쓰세요");			
-			e2.printStackTrace();
+			//e2.printStackTrace();
 		
 		}catch( NullPointerException e3 ) {
 			System.out.println("값이 없습니다. 다시 입력해 주세요");
-			e3.printStackTrace();
+			//e3.printStackTrace();
 		
 		}catch( InputMismatchException e) {
 			BankingSystemMain.sc.nextLine();
 			System.out.println("숫자를 입력해 주세요 잘못 입력되었습니다.");
-			e.printStackTrace();
+			//e.printStackTrace();
 			
 		}catch( Exception e4 ) {
-			e4.printStackTrace();
+			System.out.println("에러발생");
+			//e4.printStackTrace();
 			
 		}
 		
@@ -53,19 +54,20 @@ public class AccountErrorException extends Exception {
 			
 		}catch( NumberFormatException e2) {
 			System.out.println("숫자만 쓰세요");			
-			e2.printStackTrace();
+			//e2.printStackTrace();
 		
 		}catch( NullPointerException e3 ) {
 			System.out.println("값이 없습니다. 다시 입력해 주세요");
-			e3.printStackTrace();
+			//e3.printStackTrace();
 		
 		}catch( InputMismatchException e) {
 			BankingSystemMain.sc.nextLine();
 			System.out.println("숫자를 입력해 주세요 잘못 입력되었습니다.");
-			e.printStackTrace();
+			//e.printStackTrace();
 			
 		}catch( Exception e4 ) {
-			e4.printStackTrace();
+			System.out.println("에러발생");
+			//e4.printStackTrace();
 			
 		}
 		

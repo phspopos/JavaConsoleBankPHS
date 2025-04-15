@@ -15,20 +15,13 @@ public class BankingSystemMain {
 		System.out.println("2. 입금");
 		System.out.println("3. 출금");
 		System.out.println("4. 전체계좌정보출력");
-		System.out.println("5. 프로그램 종료");
+		System.out.println("5. 계좌정보삭제");
+		System.out.println("6. 저장옵션");
+		System.out.println("7. 프로그램 종료");
 		
 	}
-	
-	/*
-	 / 메뉴출력
-	void makeAccount();    // 계좌개설을 위한 함수
-	void depositMoney();    // 입    금
-	void withdrawMoney(); // 출    금
-	void showAccInfo();  // 3전체계좌정보출력
-
-	 */
-	public static void menuChoice() {		
-
+		
+	public static void menuChoice() {
 		
 		int choice = 0;
 		
@@ -55,8 +48,16 @@ public class BankingSystemMain {
 				System.err.println( choice+"선택");
 				acManager.showAccInfo();
 				
+			}else if( choice == Account.CLEARNUM ) {
+				acManager.removeAcount();
+				
+			}else if( choice == Account.AUTOSAVE ) {
+				acManager.autoSave();			
+				
 			}else if( choice == Account.EXIT ) {
 				System.err.println( choice+"선택");
+				acManager.objectSave();
+				//acManager.objectLoad();
 				System.out.println("프로그램을 종료 합니다.");
 				System.exit(0);
 				
@@ -66,25 +67,8 @@ public class BankingSystemMain {
 	}
 	
 	public static void main(String[] args) {
-		
-		/*
-		double num = 2.00001;
-		double test = Math.floor(num);
-		//int test = (int)num;
-		System.out.println( " test : " + test );
-		
-		System.out.println("되나");
-		String str = (BankingSystemMain.sc.nextLine());
-		
-		if( str.equals("y") ) {
-			System.out.println("1111");
-		} else {
-			System.out.println("2222");
-		}
-		*/
-		
-		menuChoice();
-		
+				
+		menuChoice();	
 		
 	}
 	

@@ -1,6 +1,8 @@
 package sourcebackup;
 
-public class NormalAccount extends Account{
+import java.io.Serializable;
+
+public class NormalAccount extends Account implements Serializable{
 	
 	private double interest_rate;
 	

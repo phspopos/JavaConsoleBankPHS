@@ -1,6 +1,8 @@
 package banking;
 
-public class HighCreditAccount extends Account {
+import java.io.Serializable;
+
+public class HighCreditAccount extends Account implements Serializable{
 
 	private double interest_rate;
 	private String grade;  
@@ -48,11 +50,11 @@ public class HighCreditAccount extends Account {
 			
 			if( hc.getAccountNumber().equals( super.getAccountNumber() ) &&
 					hc.getName().equals( super.getName() ) ) {
-				System.out.println("하이 11 들어온다.");
+				
 				check = true;
 				
 			}else {
-				System.out.println("하이 22 들어온다.");
+				
 				check = false;
 			}			
 			

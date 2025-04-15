@@ -14,8 +14,8 @@ public class AccountErrorException extends Exception {
 			
 			choice = BankingSystemMain.sc.nextInt();
 			
-			if( choice > 5 || choice == 0   ) {					
-				System.out.println(" 1~5까지만 입력하세요 다시 입력하세요");
+			if( choice > 7 || choice == 0   ) {					
+				System.out.println(" 1~7까지만 입력하세요 다시 입력하세요");
 				BankingSystemMain.sc.nextLine();
 				Thread.sleep(1000);				
 				

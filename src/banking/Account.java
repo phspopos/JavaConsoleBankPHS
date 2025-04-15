@@ -1,6 +1,8 @@
 package banking;
 
-public abstract class Account implements ICustomDefine {
+import java.io.Serializable;
+
+public abstract class Account implements ICustomDefine, Serializable {
 		
 	private String accountNumber;
 	private String name;

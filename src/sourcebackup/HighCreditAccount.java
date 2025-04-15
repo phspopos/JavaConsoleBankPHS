@@ -1,6 +1,8 @@
 package sourcebackup;
 
-public class HighCreditAccount extends Account {
+import java.io.Serializable;
+
+public class HighCreditAccount extends Account implements Serializable{
 
 	private double interest_rate;
 	private String grade;  
@@ -42,7 +44,7 @@ public class HighCreditAccount extends Account {
 		HighCreditAccount hc = null;		
 		boolean check = false;
 		
-		if( obj instanceof NormalAccount ) {
+		if( obj instanceof HighCreditAccount ) {
 			
 			hc = (HighCreditAccount)obj;
 			

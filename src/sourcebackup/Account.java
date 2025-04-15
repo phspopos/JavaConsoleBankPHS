@@ -1,14 +1,9 @@
 package sourcebackup;
 
-public abstract class Account {
-	
+import java.io.Serializable;
 
-	public static final int MAKE=1;
-	public static final int DEPOSIT=2;
-	public static final int WITHDRAW=3;
-	public static final int INQUIRE=4;
-	public static final int EXIT=5;
-	
+public abstract class Account implements ICustomDefine, Serializable {
+		
 	private String accountNumber;
 	private String name;
 	private int balance;

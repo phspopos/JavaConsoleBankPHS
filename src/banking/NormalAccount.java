@@ -1,6 +1,8 @@
 package banking;
 
-public class NormalAccount extends Account{
+import java.io.Serializable;
+
+public class NormalAccount extends Account implements Serializable{
 	
 	private double interest_rate;
 	
@@ -39,11 +41,11 @@ public class NormalAccount extends Account{
 			
 			if( nc.getAccountNumber().equals( super.getAccountNumber() ) &&
 					nc.getName().equals( super.getName() ) ) {
-				System.out.println("노말 11 들어온다.");
+				
 				check = true;
 				
 			}else {
-				System.out.println("노말 22 들어온다.");
+				
 				check = false;
 			}			
 			
