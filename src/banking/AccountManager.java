@@ -16,7 +16,7 @@ import java.util.Iterator;
 public class AccountManager {
 	
 	HashSet<Account> set = null;
-	static boolean check = false;
+	public static boolean check = false;
 		
 	public AccountManager(){
 		
@@ -25,8 +25,8 @@ public class AccountManager {
 		ObjectInputStream in = null;
 		try {
 				in = new ObjectInputStream(
-				new FileInputStream("src/banking/AccountInfo.obj")	
-			);
+					new FileInputStream("src/banking/AccountInfo.obj")	
+				);
 			
 		}catch( FileNotFoundException e ) {
 			System.out.println("[예외]파일없음");
@@ -370,6 +370,7 @@ public class AccountManager {
 		
 		if( set.size() == 0 ) {
 			System.out.println("삭제할 계좌번호가 없습니다.");
+			
 		}else {
 		
 			System.out.println("삭제할 계좌번호를 입력해주세요");
@@ -394,6 +395,7 @@ public class AccountManager {
 		
 	}
 	
+	// txt 파일 자동저장 처리 
 	public void autoSave() {
 		
 		BankingSystemMain.sc.nextLine();
@@ -432,6 +434,7 @@ public class AccountManager {
 		System.out.println("이미 자동저장 실행중 입니다.");
 	}
 	
+	// txt 파일형태로 자료 저장
 	public void autoSaveFile() {
 		
 		try {
@@ -441,9 +444,7 @@ public class AccountManager {
 			PrintWriter out = new PrintWriter(
 					new FileWriter("src/banking/AutoSaveAccount.txt")	
 			);		
-			
-			System.out.println("AutoSaveAccount.txt가 생성되었습니다.");
-						
+									
 			if( set.size() == 0) {
 				System.out.println("저장할 정보가 없습니다.");
 			
@@ -479,14 +480,15 @@ public class AccountManager {
 				}
 				
 				out.close();
+				System.out.println("AutoSaveAccount.txt가 생성되었습니다.");
+				
 				
 			}
 			
 		}catch( IOException e) {
 			System.out.println("문자스트림 작업중 오류발생");
 			e.printStackTrace();
-		}
-		
+		}		
 		
 	}
 	
