@@ -17,19 +17,21 @@ public class AccountManager {
 	
 	HashSet<Account> set = null;
 	public static boolean check = false;
+	public static int count;
 		
 	public AccountManager(){
 		
 		set = new HashSet<Account>();
 		
 		ObjectInputStream in = null;
+		
 		try {
 				in = new ObjectInputStream(
 					new FileInputStream("src/banking/AccountInfo.obj")	
 				);
 			
 		}catch( FileNotFoundException e ) {
-			System.out.println("[예외]파일없음");
+			System.out.println("파일없음");
 		
 		}catch( IOException e ) {
 			System.out.println("[Exception]뭔가없음");
@@ -54,7 +56,8 @@ public class AccountManager {
 		
 		BankingSystemMain.sc.nextLine();
 		System.out.println("1.보통계좌");
-		System.out.println("2.신용신뢰계좌");		
+		System.out.println("2.신용신뢰계좌");
+		System.out.println("3.특판계좌");
 		int choice = BankingSystemMain.sc.nextInt();
 		
 		BankingSystemMain.sc.nextLine();
@@ -89,6 +92,12 @@ public class AccountManager {
 					+ account.getName() +" : "+ account.getBalance() + " : "+((HighCreditAccount)account).getInterest_rate() 
 					+ " : " + ((HighCreditAccount)account).getGrade());
 		
+		}else if( choice == 3 ) {
+			//int count = 0;
+			
+			System.out.println("특판");
+			account = new SpecialAccount(accountNumber, name, balance, rate, count );
+			System.out.println("111111111111111");
 		}
 		
 		
@@ -140,7 +149,7 @@ public class AccountManager {
 		BankingSystemMain.sc.nextLine();
 		
 		System.out.println("계좌번호 입력");
-		String s_name = BankingSystemMain.sc.nextLine();
+		String accountNumber = BankingSystemMain.sc.nextLine();
 		
 		System.out.println("입금액을 입력");
 		
@@ -163,17 +172,18 @@ public class AccountManager {
 	        while( it.hasNext() ) {
 	        	
 	        	Account ac= it.next();
-	        	
-	        	if( ac instanceof NormalAccount ) {
-	        		
+	        	//ac.getAccountNumber().equals(accountNumber)
+	        	if( ac instanceof NormalAccount && ac.getAccountNumber().equals(accountNumber) ) {
+	        		System.out.println("1111");
 	        		NormalAccount nc = (NormalAccount)ac;
 	        		
 	        		int b_money = nc.getBalance();										
 					int nomal_money = (int)( b_money + ( b_money * Account.NORMAL ) + money );					
 					nc.setBalance( nomal_money );
+					break;
 	        	
-	        	}else if (ac instanceof HighCreditAccount ) {
-	        		
+	        	}else if ( ac instanceof HighCreditAccount && ac.getAccountNumber().equals(accountNumber)) {
+	        		System.out.println("2222");
 	        		String check = ((HighCreditAccount)ac).getGrade();					
 	        		HighCreditAccount hc = (HighCreditAccount)ac;
 	        		
@@ -183,6 +193,7 @@ public class AccountManager {
 						int b_money = hc.getBalance();										
 						int high_money = (int)( b_money + ( b_money * Account.NORMAL ) + ( b_money * Account.A ) + money );					
 						hc.setBalance( high_money );
+						break;
 						
 					}else if( check.equalsIgnoreCase("b") ) {
 						System.out.println(check + "2");
@@ -190,6 +201,7 @@ public class AccountManager {
 						int b_money = hc.getBalance();										
 						int high_money = (int)( b_money + ( b_money * Account.NORMAL ) + ( b_money * Account.B ) + money );					
 						hc.setBalance( high_money );
+						break;
 						
 						
 					}else if( check.equalsIgnoreCase("c") ) {
@@ -198,8 +210,35 @@ public class AccountManager {
 						int b_money = hc.getBalance();										
 						int high_money = (int)( b_money + ( b_money * Account.NORMAL ) + ( b_money * Account.C ) + money );					
 						hc.setBalance( high_money );
+						break;
 						
 					}	        		
+	        		
+	        	}else if( ac instanceof SpecialAccount && ac.getAccountNumber().equals(accountNumber) ) {
+	        		System.out.println("3333");
+	        		
+	        		System.out.println("특판계좌 입금");
+	        		SpecialAccount sp = (SpecialAccount)ac;
+	        		
+	        		sp.setCount( count++ );
+	        		
+	        		int b_money = sp.getBalance();
+	        		
+	        		if( sp.getCount() % 2 == 0 ) {
+	        			System.out.println("특판 500원 보너스 지급");
+	        			//잔고 + (잔고 * 기본이자) + 입금액 + 500원 
+	        			int specialMoney = (int)(b_money + ( b_money % Account.NORMAL ) + money) + 500;
+	        			
+	        			sp.setBalance( specialMoney );
+	        			break;
+	        			
+	        		}else {
+	        			//잔고 + (잔고 * 기본이자) + 입금액
+	        			int specialMoney = (int)(b_money + ( b_money % Account.NORMAL ) + money);
+	        			
+	        			sp.setBalance(specialMoney);
+	        			break;
+	        		}        		
 	        		
 	        	}	        	
 	        	
@@ -312,6 +351,7 @@ public class AccountManager {
 		
 	}
 	
+	// 고객정보 저장
 	public void objectSave() {
 		
 		try {
@@ -336,7 +376,8 @@ public class AccountManager {
 			System.out.println("[Exception]뭔가없음");
 		}		
 	}
-
+	
+	// 고객정보 불러오기
 	public void objectLoad() {
 		try {
 		 
