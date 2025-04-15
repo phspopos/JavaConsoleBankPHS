@@ -1,4 +1,4 @@
-package banking;
+package sourcebackup;
 
 public class HighCreditAccount extends Account {
 
@@ -42,7 +42,7 @@ public class HighCreditAccount extends Account {
 		HighCreditAccount hc = null;		
 		boolean check = false;
 		
-		if( obj instanceof HighCreditAccount ) {
+		if( obj instanceof NormalAccount ) {
 			
 			hc = (HighCreditAccount)obj;
 			
