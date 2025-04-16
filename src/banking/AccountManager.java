@@ -15,7 +15,7 @@ import java.util.Iterator;
 
 public class AccountManager {
 	
-	HashSet<Account> set = null;
+	public HashSet<Account> set = null;
 	public static boolean check = false;
 	//public static int count;
 		

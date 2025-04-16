@@ -58,6 +58,7 @@ public class BankingSystemMain {
 				System.err.println( choice+"선택");
 				acManager.objectSave();
 				//acManager.objectLoad();
+				//System.out.println("AccountInfo.obj 파일을 만듭니다.");
 				System.out.println("프로그램을 종료 합니다.");
 				System.exit(0);
 				
