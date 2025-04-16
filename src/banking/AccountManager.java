@@ -17,7 +17,7 @@ public class AccountManager {
 	
 	HashSet<Account> set = null;
 	public static boolean check = false;
-	public static int count;
+	//public static int count;
 		
 	public AccountManager(){
 		
@@ -34,7 +34,7 @@ public class AccountManager {
 			System.out.println("파일없음");
 		
 		}catch( IOException e ) {
-			System.out.println("[Exception]뭔가없음");
+			System.out.println("파일이 존재하지 않음");
 		}
 		
 		if( in != null ) {
@@ -96,8 +96,8 @@ public class AccountManager {
 			//int count = 0;
 			
 			System.out.println("특판");
-			account = new SpecialAccount(accountNumber, name, balance, rate, count );
-			System.out.println("111111111111111");
+			account = new SpecialAccount(accountNumber, name, balance, rate, 0 );
+			//System.out.println("111111111111111");
 		}
 		
 		
@@ -173,75 +173,82 @@ public class AccountManager {
 	        	
 	        	Account ac= it.next();
 	        	//ac.getAccountNumber().equals(accountNumber)
-	        	if( ac instanceof NormalAccount && ac.getAccountNumber().equals(accountNumber) ) {
-	        		System.out.println("1111");
-	        		NormalAccount nc = (NormalAccount)ac;
-	        		
-	        		int b_money = nc.getBalance();										
-					int nomal_money = (int)( b_money + ( b_money * Account.NORMAL ) + money );					
-					nc.setBalance( nomal_money );
-					break;
 	        	
-	        	}else if ( ac instanceof HighCreditAccount && ac.getAccountNumber().equals(accountNumber)) {
-	        		System.out.println("2222");
-	        		String check = ((HighCreditAccount)ac).getGrade();					
-	        		HighCreditAccount hc = (HighCreditAccount)ac;
+	        	if (ac.getAccountNumber().equals(accountNumber)) {
 	        		
-					if( check.equalsIgnoreCase("a") ) {
-						System.out.println(check + "1");						
-						
-						int b_money = hc.getBalance();										
-						int high_money = (int)( b_money + ( b_money * Account.NORMAL ) + ( b_money * Account.A ) + money );					
-						hc.setBalance( high_money );
-						break;
-						
-					}else if( check.equalsIgnoreCase("b") ) {
-						System.out.println(check + "2");
-						
-						int b_money = hc.getBalance();										
-						int high_money = (int)( b_money + ( b_money * Account.NORMAL ) + ( b_money * Account.B ) + money );					
-						hc.setBalance( high_money );
-						break;
-						
-						
-					}else if( check.equalsIgnoreCase("c") ) {
-						System.out.println(check + "3");
-						
-						int b_money = hc.getBalance();										
-						int high_money = (int)( b_money + ( b_money * Account.NORMAL ) + ( b_money * Account.C ) + money );					
-						hc.setBalance( high_money );
-						break;
-						
-					}	        		
+	        		System.out.println("계좌번호가 같은 것 들어온다.");
 	        		
-	        	}else if( ac instanceof SpecialAccount && ac.getAccountNumber().equals(accountNumber) ) {
-	        		System.out.println("3333");
-	        		
-	        		System.out.println("특판계좌 입금");
-	        		SpecialAccount sp = (SpecialAccount)ac;
-	        		
-	        		sp.setCount( count++ );
-	        		
-	        		int b_money = sp.getBalance();
-	        		
-	        		if( sp.getCount() % 2 == 0 ) {
-	        			System.out.println("특판 500원 보너스 지급");
-	        			//잔고 + (잔고 * 기본이자) + 입금액 + 500원 
-	        			int specialMoney = (int)(b_money + ( b_money % Account.NORMAL ) + money) + 500;
+	        		if (ac instanceof SpecialAccount ) {
 	        			
-	        			sp.setBalance( specialMoney );
-	        			break;
+	        			System.out.println("스페셜 들어온다.");        			
+		        		
+		        		System.out.println("특판계좌 입금");
+		        		SpecialAccount sp = (SpecialAccount)ac;
+		        		
+		        		sp.setCount( sp.getCount() + 1  );
+		        		
+		        		int b_money = sp.getBalance();
+		        		
+		        		if( sp.getCount() % 2 == 0 ) {
+		        			System.out.println("특판 500원 보너스 지급");
+		        			//잔고 + (잔고 * 기본이자) + 입금액 + 500원 
+		        			int specialMoney = (int)(b_money + ( b_money % Account.NORMAL ) + money) + 500;
+		        			
+		        			sp.setBalance( specialMoney );
+		        			break;
+		        			
+		        		}else {
+		        			//잔고 + (잔고 * 기본이자) + 입금액
+		        			int specialMoney = (int)(b_money + ( b_money % Account.NORMAL ) + money);
+		        			
+		        			sp.setBalance(specialMoney);
+		        			break;
+		        		}        		
 	        			
-	        		}else {
-	        			//잔고 + (잔고 * 기본이자) + 입금액
-	        			int specialMoney = (int)(b_money + ( b_money % Account.NORMAL ) + money);
-	        			
-	        			sp.setBalance(specialMoney);
-	        			break;
-	        		}        		
 	        		
-	        	}	        	
-	        	
+	        		} else if( ac instanceof NormalAccount  ) {
+		        		System.out.println("NormalAccount 입금");
+		        		NormalAccount nc = (NormalAccount)ac;
+		        		
+		        		int b_money = nc.getBalance();										
+						int nomal_money = (int)( b_money + ( b_money * Account.NORMAL ) + money );					
+						nc.setBalance( nomal_money );
+						break;
+		        	//&& ac.getAccountNumber().equals(accountNumber)
+		        	}else if ( ac instanceof HighCreditAccount ) {
+		        		System.out.println("HighCreditAccount 입금");
+		        		String check = ((HighCreditAccount)ac).getGrade();					
+		        		HighCreditAccount hc = (HighCreditAccount)ac;
+		        		
+						if( check.equalsIgnoreCase("a") ) {
+							System.out.println(check + "1");						
+							
+							int b_money = hc.getBalance();										
+							int high_money = (int)( b_money + ( b_money * Account.NORMAL ) + ( b_money * Account.A ) + money );					
+							hc.setBalance( high_money );
+							break;
+							
+						}else if( check.equalsIgnoreCase("b") ) {
+							System.out.println(check + "2");
+							
+							int b_money = hc.getBalance();										
+							int high_money = (int)( b_money + ( b_money * Account.NORMAL ) + ( b_money * Account.B ) + money );					
+							hc.setBalance( high_money );
+							break;
+							
+							
+						}else if( check.equalsIgnoreCase("c") ) {
+							System.out.println(check + "3");
+							
+							int b_money = hc.getBalance();										
+							int high_money = (int)( b_money + ( b_money * Account.NORMAL ) + ( b_money * Account.C ) + money );					
+							hc.setBalance( high_money );
+							break;
+							
+						}	        		
+		        		
+		        	}
+		        }
 	        }
 		 }else {			 
 		    System.out.println("500원 단위로만 입금할 수 있습니다.");
@@ -338,7 +345,11 @@ public class AccountManager {
 		while( it.hasNext() ) {
 			Account ac = it.next();
 			
-			if( ac instanceof NormalAccount ) {
+			if( ac instanceof SpecialAccount) {
+				SpecialAccount sp = (SpecialAccount)ac;
+				sp.showAllData();
+				
+			}else if( ac instanceof NormalAccount ) {
 				NormalAccount nc = (NormalAccount)ac;
 				nc.showAllData();
 				
@@ -388,18 +399,18 @@ public class AccountManager {
 		//System.out.println( "인의 값은 : " + in );
 					
 		set = (HashSet)in.readObject();			
-		System.out.println( " 사이즈 : "+set.size() );		
+		//System.out.println( " 사이즈 : "+set.size() );		
 		
 		in.close();
 				
 		}catch( ClassNotFoundException e ) {
-			System.out.println("[예외]클래스없음");
+			System.out.println("클래스없음");
 		
 		}catch( FileNotFoundException e ) {
-			System.out.println("[예외]파일없음");
+			System.out.println("파일없음");
 		
 		}catch( IOException e ) {
-			System.out.println("[Exception]뭔가없음");
+			System.out.println("뭔가없음");
 		}
 		
 	}
@@ -497,7 +508,17 @@ public class AccountManager {
 					
 					Account ac = it.next();
 					
-					if( ac instanceof NormalAccount ) {
+					if( ac instanceof SpecialAccount ) {
+						SpecialAccount sp = (SpecialAccount)ac;
+						
+						out.print( sp.getAccountNumber() + " " );
+						out.print( sp.getName() + " " );
+						out.print( sp.getBalance() + " " );
+						out.print( sp.getInterest_rate() + " " );
+						out.print( sp.getCount() + " " );
+						out.println();
+						
+					}else if( ac instanceof NormalAccount ) {
 						NormalAccount nc = (NormalAccount)ac;
 						
 						out.print( nc.getAccountNumber() + " " );

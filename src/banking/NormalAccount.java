@@ -14,6 +14,7 @@ public class NormalAccount extends Account implements Serializable{
 	
 	@Override
 	public void showAllData() {
+		//System.out.println("아버지");
 		super.showAllData();
 		System.out.print( ", 이자율 : "+ interest_rate + "\n");
 		
