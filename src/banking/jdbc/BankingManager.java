@@ -230,10 +230,10 @@ public class BankingManager {
 		
 		try {
 			
-			System.out.println("계좌번호를 입력해 주세요");
-			String accNum = BankingMain.sc.nextLine();
-			
 			BankingMain.sc.nextLine();
+			
+			System.out.println("계좌번호를 입력해 주세요");
+			String accNum = BankingMain.sc.nextLine();			
 			
 			System.out.println("찾을 금액을 입력해 주세요");
 			int money = BankingMain.sc.nextInt();	
