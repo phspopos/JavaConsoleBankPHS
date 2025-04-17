@@ -114,7 +114,8 @@ public abstract class Account implements ICustomDefine, Serializable {
 	@Override
 	public int hashCode() {
 		
-		int returnCode2 = Objects.hash( this.accountNumber , this.name );
+		//, this.name
+		int returnCode2 = Objects.hash( this.accountNumber  );
 		System.out.println("returnCode2 = " + returnCode2);
 		
 		return returnCode2;
