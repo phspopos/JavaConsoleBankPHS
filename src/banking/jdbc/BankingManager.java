@@ -52,7 +52,7 @@ public class BankingManager {
 			String sql = "insert into banking values( seq_banking_idx.nextval,"
 					+ " ?, ?, ?, ? ) ";
 			
-			System.out.println(sql);
+			//System.out.println(sql);
 			
 			con = getConnection();
 			psmt = con.prepareStatement(sql);
@@ -85,7 +85,7 @@ public class BankingManager {
 		try {
 			//int idx, String accountNum, String name, int balance, double rate
 			String sql = "select idx, accountNum, name, balance, rate from banking order by idx";
-			System.out.println(sql);
+			//System.out.println(sql);
 			con = getConnection();
 			stmt = con.createStatement();
 			
@@ -125,7 +125,7 @@ public class BankingManager {
 			String sql = "select idx, accountNum, name, balance, rate from banking "
 					+ " where accountNum = " + accNum;
 			
-			System.out.println(sql);
+			//System.out.println(sql);
 			
 			con = getConnection();
 			stmt = con.createStatement();
@@ -180,7 +180,7 @@ public class BankingManager {
 			int money = BankingMain.sc.nextInt();
 			
 			String sql1 = "select balance from banking where accountNum = "+ accNum;
-			System.out.println(sql1);
+			//System.out.println(sql1);
 			
 			con = getConnection();
 			stmt = con.createStatement();
@@ -196,7 +196,7 @@ public class BankingManager {
 			
 			String sql2 = "update banking set balance = ? where accountNum = ?";
 			
-			System.out.println(sql2);
+			//System.out.println(sql2);
 			
 			//잔액 + (잔액 * 기본이자) + 입금액
 			int total = (int)( (b_money + ( b_money * 0.02 )) + money );
@@ -239,7 +239,7 @@ public class BankingManager {
 			int money = BankingMain.sc.nextInt();	
 			
 			String sql = "select balance from banking where accountNum = "+accNum;
-			System.out.println(sql);
+			//System.out.println(sql);
 			
 			con = getConnection();
 			stmt = con.createStatement();
@@ -254,7 +254,7 @@ public class BankingManager {
 			System.out.println("찾기 잔액 : " + b_money);
 			
 			String sql2 = "update banking set balance = ? where accountNum = ?";
-			System.out.println(sql2);
+			//System.out.println(sql2);
 			
 			
 			if( b_money >= money ) {
