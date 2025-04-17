@@ -323,6 +323,8 @@ public class AccountManager {
 						
 						//System.out.println("1111");
 						
+						ac.setBalance( ac.getBalance()- ac.getBalance() );
+						/*
 						if ( money % 1000 == 0 ) {
 							
 							//System.out.println("2222");
@@ -333,7 +335,7 @@ public class AccountManager {
 							System.out.println("출금은 1000원 단위로만 출금이 가능하다. Ex)2000원 출금가능, "
 									+ "1100원을 출금불가" );
 						}
-						
+						*/
 					}else {
 						System.out.println("출금을 중지 합니다.");
 					}			
