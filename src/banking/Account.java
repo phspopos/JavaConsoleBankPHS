@@ -1,6 +1,7 @@
 package banking;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public abstract class Account implements ICustomDefine, Serializable {
 		
@@ -47,5 +48,80 @@ public abstract class Account implements ICustomDefine, Serializable {
 		System.out.print(", 고객이름 : " + getName());
 		System.out.print(", 잔고 : " + getBalance());		
 	}
+	
+
+	@Override
+	public boolean equals( Object obj ) {
+		
+		System.out.println(" equals() 호출됨");
+		
+		boolean check = false;
+		NormalAccount nc = null;
+		HighCreditAccount hc = null;
+		SpecialAccount sp = null;		
+		
+		if( obj instanceof SpecialAccount ) {
+			sp = (SpecialAccount)obj;			
+			
+			//&& nc.getName().equals( super.getName() ) this.accountNumber
+			if( sp.getAccountNumber().equals( this.accountNumber )
+					 ) {
+				
+				System.out.println("스페셜 1111");				
+				check = true;
+			
+			}else {
+				System.out.println("스페셜 2222");				
+				check = false;
+			}
+		}else if( obj instanceof NormalAccount ) {
+			nc = (NormalAccount)obj;
+		
+			//&& nc.getName().equals( super.getName() )
+			if( nc.getAccountNumber().equals( this.accountNumber )
+					 ) {
+				
+				System.out.println("노말 : 1111");				
+				check = true;
+			
+			}else {
+				System.out.println("노말 : 2222");				
+				check = false;
+			}
+			
+			
+		}else if( obj instanceof HighCreditAccount ) {
+			hc = (HighCreditAccount)obj;
+			
+			
+			//&& nc.getName().equals( super.getName() )
+			if( hc.getAccountNumber().equals( this.accountNumber )
+					 ) {
+				
+				System.out.println("하이 1111");				
+				check = true;
+			
+			}else {
+				System.out.println("하이 2222");				
+				check = false;
+			}
+		} 
+		
+		return check;	
+		
+	}
+	
+	@Override
+	public int hashCode() {
+		
+		int returnCode2 = Objects.hash( this.accountNumber , this.name );
+		System.out.println("returnCode2 = " + returnCode2);
+		
+		return returnCode2;
+	}
+	
+	
+	
+	
 	
 }

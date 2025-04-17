@@ -1,6 +1,9 @@
 package banking;
 
 import java.io.Serializable;
+import java.util.Objects;
+
+//import common.Teacher;
 
 public class NormalAccount extends Account implements Serializable{
 	
@@ -28,6 +31,7 @@ public class NormalAccount extends Account implements Serializable{
 		this.interest_rate = interest_rate;
 	}
 	
+	/*
 	@Override
 	public boolean equals( Object obj ) {
 		
@@ -55,6 +59,81 @@ public class NormalAccount extends Account implements Serializable{
 		return check;
 		
 	}
+	*/
 	
+	
+	/*
+	@Override
+	public int hashCode() {
+
+		int returnCode2 = Objects.hash(super.getAccountNumber() , this.interest_rate );
+		System.out.println("노말1 returnCode2 = " + returnCode2);
+		
+		return returnCode2;
+	}
+	*/
+	
+	/*
+	@Override
+	public boolean equals( Object obj ) {
+		
+		System.out.println(" NormalAccount equals() 호출됨");
+		
+		boolean check = false;
+		NormalAccount nc = null;
+		HighCreditAccount hc = null;
+		SpecialAccount sp = null;		
+		
+		if( obj instanceof SpecialAccount ) {
+			sp = (SpecialAccount)obj;			
+			
+			//&& nc.getName().equals( super.getName() )
+			if( sp.getAccountNumber().equals( super.getAccountNumber() )
+					 ) {
+				
+				System.out.println("스페셜 1111");				
+				check = true;
+			
+			}else {
+				System.out.println("스페셜 2222");				
+				check = false;
+			}
+		}else if( obj instanceof NormalAccount ) {
+			nc = (NormalAccount)obj;
+		
+			//&& nc.getName().equals( super.getName() )
+			if( nc.getAccountNumber().equals( super.getAccountNumber() )
+					 ) {
+				
+				System.out.println("노말 : 1111");				
+				check = true;
+			
+			}else {
+				System.out.println("노말 : 2222");				
+				check = false;
+			}
+			
+			
+		}else if( obj instanceof HighCreditAccount ) {
+			hc = (HighCreditAccount)obj;
+			
+			
+			//&& nc.getName().equals( super.getName() )
+			if( hc.getAccountNumber().equals( super.getAccountNumber() )
+					 ) {
+				
+				System.out.println("하이 1111");				
+				check = true;
+			
+			}else {
+				System.out.println("하이 2222");				
+				check = false;
+			}
+		} 
+		
+		return check;	
+		
+	}
+	*/
 	
 }

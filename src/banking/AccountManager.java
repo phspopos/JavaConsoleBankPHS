@@ -123,8 +123,15 @@ public class AccountManager {
 					
 					//System.out.println("444");
 					System.out.println("덥어쓴다.");
-					set.remove(ac);
+					//set.remove(ac);
+					
+					System.out.println(" 저장여부 : " + set.add(account));
+					
+					//set.add(account);
+					set.remove(account);
+					
 					set.add(account);
+					
 					break;
 					
 				}else {
