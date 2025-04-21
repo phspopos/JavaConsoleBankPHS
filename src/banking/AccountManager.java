@@ -125,7 +125,7 @@ public class AccountManager {
 					System.out.println("덥어쓴다.");
 					//set.remove(ac);
 					
-					System.out.println(" 저장여부 : " + set.add(account));
+					//System.out.println(" 저장여부 : " + set.add(account));
 					
 					//set.add(account);
 					set.remove(account);
@@ -183,11 +183,11 @@ public class AccountManager {
 	        	
 	        	if (ac.getAccountNumber().equals(accountNumber)) {
 	        		
-	        		System.out.println("계좌번호가 같은 것 들어온다.");
+	        		//System.out.println("계좌번호가 같은 것 들어온다.");
 	        		
 	        		if (ac instanceof SpecialAccount ) {
 	        			
-	        			System.out.println("스페셜 들어온다.");        			
+	        			//System.out.println("스페셜 들어온다.");        			
 		        		
 		        		System.out.println("특판계좌 입금");
 		        		SpecialAccount sp = (SpecialAccount)ac;

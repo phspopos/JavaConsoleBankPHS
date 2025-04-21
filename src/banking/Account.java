@@ -53,7 +53,7 @@ public abstract class Account implements ICustomDefine, Serializable {
 	@Override
 	public boolean equals( Object obj ) {
 		
-		System.out.println(" equals() 호출됨");
+		//System.out.println(" equals() 호출됨");
 		
 		boolean check = false;
 		NormalAccount nc = null;
@@ -67,11 +67,11 @@ public abstract class Account implements ICustomDefine, Serializable {
 			if( sp.getAccountNumber().equals( this.accountNumber )
 					 ) {
 				
-				System.out.println("스페셜 1111");				
+				//System.out.println("스페셜 1111");				
 				check = true;
 			
 			}else {
-				System.out.println("스페셜 2222");				
+				//System.out.println("스페셜 2222");				
 				check = false;
 			}
 		}else if( obj instanceof NormalAccount ) {
@@ -81,11 +81,11 @@ public abstract class Account implements ICustomDefine, Serializable {
 			if( nc.getAccountNumber().equals( this.accountNumber )
 					 ) {
 				
-				System.out.println("노말 : 1111");				
+				//System.out.println("노말 : 1111");				
 				check = true;
 			
 			}else {
-				System.out.println("노말 : 2222");				
+				//System.out.println("노말 : 2222");				
 				check = false;
 			}
 			
@@ -98,11 +98,11 @@ public abstract class Account implements ICustomDefine, Serializable {
 			if( hc.getAccountNumber().equals( this.accountNumber )
 					 ) {
 				
-				System.out.println("하이 1111");				
+				//System.out.println("하이 1111");				
 				check = true;
 			
 			}else {
-				System.out.println("하이 2222");				
+				//System.out.println("하이 2222");				
 				check = false;
 			}
 		} 
@@ -116,7 +116,7 @@ public abstract class Account implements ICustomDefine, Serializable {
 		
 		//, this.name
 		int returnCode2 = Objects.hash( this.accountNumber  );
-		System.out.println("returnCode2 = " + returnCode2);
+		//System.out.println("returnCode2 = " + returnCode2);
 		
 		return returnCode2;
 	}
